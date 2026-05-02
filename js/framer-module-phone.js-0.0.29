@@ -1,0 +1,8 @@
+/*
+ * phone (feather-icons/phone@0.0.29)
+ *
+ * Learn More: https://www.framer.com/asset-urls
+ */
+
+export * from "../js/phone.js"
+export { default } from "../js/phone.js"

@@ -1,0 +1,129 @@
+/* ================================================
+   MORNEAULT ENTRETIEN — Custom CSS para exportador
+   Pegar en "CSS Content" de la herramienta
+   ================================================ */
+
+/* 1. FIX VISIBILIDAD FRAMER
+   Framer deja elementos en opacity:0.001 sin su JS */
+[style*="opacity:0.001"],
+[style*="opacity: 0.001"] {
+  opacity: 1 !important;
+}
+[data-framer-appear-id],
+[data-framer-name] {
+  opacity: 1 !important;
+  transform: none !important;
+  visibility: visible !important;
+}
+.framer-9ho0yd, .framer-1v2h4yr, .framer-5q0u1z,
+.framer-1x0m8hw, .framer-bporne, .framer-u218f,
+.framer-xdn9nt, .framer-w1iuiq, .framer-eh00q2,
+.framer-60sptw, .framer-17fflp8 {
+  opacity: 1 !important;
+  transform: none !important;
+  will-change: auto !important;
+}
+section[style*="opacity:0.001"] li,
+section[style*="opacity: 0.001"] li {
+  visibility: visible !important;
+}
+.framer-vjk5ar-container, .framer-i2rckk-container,
+.framer-4oxjoa-container, .framer-1dq24mq-container,
+.framer-774fqb-container, .framer-1f7m3yq-container,
+.framer-97jfix-container, .framer-7sk8s9-container,
+.framer-1wpkecf-container, .framer-sxhoi5-container,
+.framer-e87fte-container, .framer-gmh18p-container {
+  opacity: 1 !important;
+  transform: none !important;
+}
+
+/* 2. FADE-IN AL SCROLL */
+@keyframes morneaultFadeInUp {
+  from { opacity: 0; transform: translateY(30px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+.morneault-fade-in {
+  animation: morneaultFadeInUp 0.6s ease forwards;
+}
+
+/* 3. MENÚ MOBILE CUSTOM */
+@media (max-width: 767.98px) {
+  body { padding-top: 64px; }
+}
+
+#cmn {
+  display: none;
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  z-index: 99999;
+  background: rgba(0,0,0,0.78);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  padding: 14px 20px;
+  align-items: center;
+  justify-content: space-between;
+  box-shadow: 0 2px 20px rgba(0,0,0,0.35);
+}
+@media (max-width: 767.98px) {
+  #cmn { display: flex; }
+}
+#cmn .cmn-logo img {
+  height: 38px; width: auto; object-fit: contain; display: block;
+}
+#cmn-btn {
+  background: none; border: none; cursor: pointer;
+  padding: 8px; display: flex; flex-direction: column;
+  gap: 5px; border-radius: 8px;
+  transition: background 0.2s;
+}
+#cmn-btn:hover { background: rgba(255,255,255,0.12); }
+#cmn-btn span {
+  display: block; width: 24px; height: 2px;
+  background: white; border-radius: 2px;
+  transition: all 0.3s ease; transform-origin: center;
+}
+#cmn-btn.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+#cmn-btn.open span:nth-child(2) { opacity: 0; transform: scaleX(0); }
+#cmn-btn.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
+#cmn-dropdown {
+  display: none;
+  position: fixed; top: 64px; left: 0; right: 0;
+  z-index: 99998;
+  background: white;
+  box-shadow: 0 8px 32px rgba(0,0,0,0.15);
+  border-bottom-left-radius: 16px;
+  border-bottom-right-radius: 16px;
+  overflow: hidden;
+  animation: cmnSlide 0.25s ease;
+}
+#cmn-dropdown.open { display: block; }
+@keyframes cmnSlide {
+  from { opacity:0; transform:translateY(-8px); }
+  to   { opacity:1; transform:translateY(0); }
+}
+#cmn-dropdown a {
+  display: block; padding: 18px 24px;
+  font-family: Inter, sans-serif; font-size: 16px;
+  font-weight: 500; color: #1c1919;
+  text-decoration: none;
+  border-bottom: 1px solid rgba(39,45,66,0.08);
+  transition: background 0.15s, color 0.15s;
+}
+#cmn-dropdown a:last-child { border-bottom: none; }
+#cmn-dropdown a:hover { background: #f6f5f5; color: #4fade6; }
+#cmn-dropdown .cmn-cta {
+  display: block; margin: 16px 24px 20px;
+  padding: 14px 24px;
+  background: #e82828; color: white !important;
+  text-align: center; border-radius: 90px;
+  font-weight: 600; border-bottom: none !important;
+  box-shadow: inset 0px -3px 4px 0px rgba(0,0,0,0.25);
+}
+#cmn-dropdown .cmn-cta:hover { background: #c91f1f !important; color: white !important; }
+
+#cmn-overlay {
+  display: none; position: fixed; inset: 0; top: 64px;
+  z-index: 99997; background: rgba(0,0,0,0.3);
+}
+#cmn-overlay.open { display: block; }

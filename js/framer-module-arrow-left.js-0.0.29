@@ -1,0 +1,8 @@
+/*
+ * arrow-left (feather-icons/arrow-left@0.0.29)
+ *
+ * Learn More: https://www.framer.com/asset-urls
+ */
+
+export * from "../js/arrow-left.js"
+export { default } from "../js/arrow-left.js"
