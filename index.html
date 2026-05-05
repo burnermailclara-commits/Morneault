@@ -127,5 +127,98 @@
     
     <!-- End of bodyEnd -->
 
+
+<!-- MARQUEE GALLERY v2 -->
+<style id="morneault-marquee-style">
+#morneault-marquee-wrap {
+  position: absolute;
+  inset: 0 0 -15px;
+  overflow: hidden;
+  z-index: 0;
+  pointer-events: none;
+}
+.m-track {
+  display: flex;
+  width: max-content;
+  height: 100%;
+  animation: morneaultScroll 35s linear infinite;
+}
+@keyframes morneaultScroll {
+  0%   { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+.m-track img {
+  height: 100%;
+  width: auto;
+  object-fit: cover;
+  object-position: center;
+  flex-shrink: 0;
+  display: block;
+}
+#morneault-marquee-wrap::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    91deg,
+    rgba(5,26,43,0.88) -12%,
+    rgba(5,26,43,0.45) 50%,
+    rgba(5,26,43,0.15) 100%
+  );
+  pointer-events: none;
+}
+</style>
+
+<script id="morneault-marquee-script">
+(function() {
+  function buildMarquee() {
+    // Insertar dentro de .framer-rpef9n (el contenedor del fondo del hero)
+    var heroSection = document.querySelector('.framer-rpef9n');
+    if (!heroSection) { console.warn('marquee: .framer-rpef9n no encontrado'); return; }
+
+    // Evitar duplicados
+    if (document.getElementById('morneault-marquee-wrap')) return;
+
+    var images = [
+      'images/gallery/gallery-1.jpg',
+      'images/gallery/gallery-2.jpg',
+      'images/gallery/gallery-3.jpg',
+      'images/gallery/gallery-4.jpg',
+      'images/gallery/gallery-5.jpg',
+      'images/gallery/gallery-1.jpg',
+      'images/gallery/gallery-2.jpg',
+      'images/gallery/gallery-3.jpg',
+      'images/gallery/gallery-4.jpg',
+      'images/gallery/gallery-5.jpg'
+    ];
+
+    var wrap = document.createElement('div');
+    wrap.id = 'morneault-marquee-wrap';
+
+    var track = document.createElement('div');
+    track.className = 'm-track';
+
+    images.forEach(function(src) {
+      var img = document.createElement('img');
+      img.src = src;
+      img.alt = '';
+      img.loading = 'lazy';
+      track.appendChild(img);
+    });
+
+    wrap.appendChild(track);
+    // Insertar al principio del contenedor del hero background
+    heroSection.insertBefore(wrap, heroSection.firstChild);
+  }
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', buildMarquee);
+  } else {
+    buildMarquee();
+  }
+})();
+</script>
+<!-- END MARQUEE GALLERY v2 -->
+
 </body>
 </html>
