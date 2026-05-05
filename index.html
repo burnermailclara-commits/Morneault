@@ -126,5 +126,115 @@
 	<!-- Start of bodyEnd -->
     
     <!-- End of bodyEnd -->
+
+<!-- MARQUEE GALLERY - reemplaza slideshow de Framer -->
+<style id="morneault-marquee-style">
+/* Ocultar el slideshow original de Framer en el hero */
+.framer-1aov32d-container {
+  opacity: 0 !important;
+  pointer-events: none !important;
+  position: absolute !important;
+}
+
+/* Contenedor del marquee - se superpone al fondo del hero */
+#morneault-marquee-wrap {
+  position: absolute;
+  inset: 0 0 -15px;
+  overflow: hidden;
+  z-index: 0;
+  pointer-events: none;
+}
+
+/* La pista que se mueve */
+.m-track {
+  display: flex;
+  width: max-content;
+  height: 100%;
+  animation: morneaultScroll 30s linear infinite;
+}
+
+/* Pausa al hover */
+.m-track:hover {
+  animation-play-state: paused;
+}
+
+@keyframes morneaultScroll {
+  0%   { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+
+/* Cada imagen */
+.m-track img {
+  height: 100%;
+  width: auto;
+  object-fit: cover;
+  object-position: center;
+  flex-shrink: 0;
+  display: block;
+  gap: 0;
+}
+
+/* Gradiente oscuro encima para que el texto sea legible */
+#morneault-marquee-wrap::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    91deg,
+    rgba(5, 26, 43, 0.85) -12%,
+    rgba(5, 26, 43, 0.4) 50%,
+    rgba(5, 26, 43, 0.1) 100%
+  );
+  pointer-events: none;
+}
+</style>
+
+<script id="morneault-marquee-script">
+(function() {
+  function buildMarquee() {
+    var heroSection = document.querySelector('.framer-rpef9n');
+    if (!heroSection) return;
+
+    // Imágenes — duplicadas para loop infinito seamless
+    var images = [
+      'images/gallery/gallery-1.jpg',
+      'images/gallery/gallery-2.jpg',
+      'images/gallery/gallery-3.jpg',
+      'images/gallery/gallery-4.jpg',
+      'images/gallery/gallery-5.jpg',
+      'images/gallery/gallery-1.jpg',
+      'images/gallery/gallery-2.jpg',
+      'images/gallery/gallery-3.jpg',
+      'images/gallery/gallery-4.jpg',
+      'images/gallery/gallery-5.jpg'
+    ];
+
+    var wrap = document.createElement('div');
+    wrap.id = 'morneault-marquee-wrap';
+
+    var track = document.createElement('div');
+    track.className = 'm-track';
+
+    images.forEach(function(src) {
+      var img = document.createElement('img');
+      img.src = src;
+      img.alt = '';
+      img.loading = 'lazy';
+      track.appendChild(img);
+    });
+
+    wrap.appendChild(track);
+    heroSection.insertBefore(wrap, heroSection.firstChild);
+  }
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', buildMarquee);
+  } else {
+    buildMarquee();
+  }
+})();
+</script>
+<!-- END MARQUEE GALLERY -->
+
 </body>
 </html>
