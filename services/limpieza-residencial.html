@@ -104,7 +104,7 @@
 
 						<link href="../css/style.css" rel="stylesheet" type="text/css"/>
 						<script type="text/javascript" src="../js/script.js"></script>
-					</head>
+					<style>.mn-appear{opacity:0;transform:translateY(24px);transition:opacity .6s ease,transform .6s ease}.mn-appear.mn-visible{opacity:1;transform:none}a[data-framer-name="Button 01"][data-highlight="true"]{background-color:#4fade6!important}</style></head>
 <body>
 	
 	<!-- Start of bodyStart -->
@@ -126,5 +126,5 @@
 	<!-- Start of bodyEnd -->
     
     <!-- End of bodyEnd -->
-</body>
+<script>(function(){var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add("mn-visible");io.unobserve(e.target);}});},{threshold:0.12});document.querySelectorAll("[data-framer-appear-id]").forEach(function(el){el.style.opacity="";el.style.transform="";el.classList.add("mn-appear");io.observe(el);});})();</script></body>
 </html>
