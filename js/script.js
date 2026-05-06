@@ -51,11 +51,9 @@
       '<div id="cmn-overlay"></div>',
       '<div id="cmn-dropdown">',
       '  <a href="./">Home</a>',
-      '  <a href="./about">À Propos</a>',
-      '  <a href="./services">Services</a>',
-      '  <a href="./review">Avis clients</a>',
-      '  <a href="./contact">Contact</a>',
-      '  <a href="./contact" class="cmn-cta">Soumission Gratuite</a>',
+      '  <a href="./about.html">À Propos</a>',
+      '  <a href="./services.html">Services</a>',
+      '  <a href="./contact.html" class="cmn-cta">Soumission Gratuite</a>',
       '</div>'
     ].join('');
 
