@@ -124,5 +124,5 @@
 	<!-- Start of bodyEnd -->
     
     <!-- End of bodyEnd -->
-<script>(function(){var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){var t=e.target;t.classList.add("mn-visible");io.unobserve(t);setTimeout(function(){t.style.transition="none";t.classList.remove("mn-appear","mn-visible");void t.offsetWidth;t.style.transition="";},700);}});},{threshold:0.12});document.querySelectorAll('[data-framer-appear-id],[style*="will-change:transform"][style*="opacity:0"]').forEach(function(el){el.style.opacity="";el.style.transform="";el.classList.add("mn-appear");io.observe(el);});})();</script></body>
+<script>(function(){var io=new IntersectionObserver(function(es){es.forEach(function(e){if(!e.isIntersecting)return;var t=e.target;if(t.dataset.framerAppearId!==undefined){t.style.transition="opacity 0.6s ease";t.style.opacity="1";}else{t.classList.add("mn-visible");}io.unobserve(t);});},{threshold:0.12});document.querySelectorAll("[data-framer-appear-id]").forEach(function(el){el.style.opacity="0";io.observe(el);});document.querySelectorAll('[style*="will-change:transform"][style*="opacity:0"]').forEach(function(el){if(el.dataset.framerAppearId!==undefined)return;el.style.opacity="";el.style.transform="";el.classList.add("mn-appear");io.observe(el);});})();</script></body>
 </html>
