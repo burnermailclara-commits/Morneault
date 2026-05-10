@@ -4,9 +4,9 @@
    ================================================ */
 
 /* Fix: eliminar línea blanca sobre barra azul */
-html, body { margin: 0 !important; padding: 0 !important; background-color: #4fade6 !important; }
-#main { margin: 0 !important; padding: 0 !important; }
-.framer-mhdxu2 { background-color: transparent !important; }
+html { margin: 0 !important; padding: 0 !important; background-color: #4fade6 !important; }
+body { margin: 0 !important; padding: 0 !important; font-size: 0 !important; line-height: 0 !important; background-color: #4fade6 !important; }
+#main { margin: 0 !important; padding: 0 !important; font-size: 12px; line-height: normal; }
 
 /* 1. FIX VISIBILIDAD FRAMER
    Framer deja elementos en opacity:0.001 sin su JS */
