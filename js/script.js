@@ -59,6 +59,7 @@
 
     var wrapper = document.createElement('div');
     wrapper.innerHTML = html;
+    wrapper.style.cssText = 'height:0;line-height:0;font-size:0;overflow:visible;margin:0;padding:0;border:0';
     document.body.insertBefore(wrapper, document.body.firstChild);
 
     // Lógica del toggle
