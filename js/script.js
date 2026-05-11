@@ -113,9 +113,17 @@
         var orig = btn ? btn.textContent : '';
         if (btn) { btn.textContent = 'Envoi en cours…'; btn.disabled = true; }
 
+        // Solo enviar los campos visibles del formulario (excluir campos ocultos de Framer)
+        var allowed = ['access_key', 'subject', 'Name', 'Email', 'Phone', 'Service'];
+        var fd = new FormData();
+        allowed.forEach(function(key) {
+          var el = form.elements[key];
+          if (el) fd.append(key, el.value);
+        });
+
         fetch('https://api.web3forms.com/submit', {
           method: 'POST',
-          body: new FormData(form)
+          body: fd
         })
         .then(function(r) { return r.json(); })
         .then(function(res) {
