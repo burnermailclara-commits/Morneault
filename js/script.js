@@ -56,9 +56,7 @@
       '<div id="cmn-dropdown">',
       '  <a href="' + b + '">Accueil</a>',
       '  <a href="' + b + 'about.html">À Propos</a>',
-      '  <a href="' + b + 'services/limpieza-residencial.html">Éclat Résidentiel</a>',
-      '  <a href="' + b + 'services/areas-comunes.html">Entretien Commercial</a>',
-      '  <a href="' + b + 'services/limpieza-post-construccion.html">Post-Construction</a>',
+      '  <a href="' + b + 'services.html">Services</a>',
       '  <a href="' + b + 'contact.html" class="cmn-cta">Soumission Gratuite</a>',
       '</div>'
     ].join('');
