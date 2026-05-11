@@ -96,34 +96,26 @@
       if (form.dataset.w3fInit) return;
       form.dataset.w3fInit = '1';
 
-      // Inyectar campos hidden
-      function addHidden(name, value) {
-        var input = document.createElement('input');
-        input.type = 'hidden';
-        input.name = name;
-        input.value = value;
-        form.insertBefore(input, form.firstChild);
-      }
-      addHidden('access_key', '0506bad4-d94f-4f74-a4cb-8f6e3f6eb48e');
-      addHidden('subject', 'Nouveau message — Morneault Entretien Ménager');
-
       form.addEventListener('submit', function(e) {
         e.preventDefault();
         var btn = form.querySelector('[type="submit"], button');
         var orig = btn ? btn.textContent : '';
         if (btn) { btn.textContent = 'Envoi en cours…'; btn.disabled = true; }
 
-        // Solo enviar los campos visibles del formulario (excluir campos ocultos de Framer)
-        var allowed = ['access_key', 'subject', 'Name', 'Email', 'Phone', 'Service'];
-        var fd = new FormData();
-        allowed.forEach(function(key) {
-          var el = form.elements[key];
-          if (el) fd.append(key, el.value);
-        });
+        // Enviar solo los campos necesarios via JSON (evita los 15 campos vacíos de Framer)
+        var payload = {
+          access_key: '0506bad4-d94f-4f74-a4cb-8f6e3f6eb48e',
+          subject: 'Nouveau message - Morneault Entretien Menager',
+          Nom:      (form.querySelector('[name="Name"]') || {}).value || '',
+          Email:    (form.querySelector('[name="Email"]') || {}).value || '',
+          Telephone:(form.querySelector('[name="Phone"]') || {}).value || '',
+          Service:  (form.querySelector('[name="Service"]') || {}).value || ''
+        };
 
         fetch('https://api.web3forms.com/submit', {
           method: 'POST',
-          body: fd
+          headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+          body: JSON.stringify(payload)
         })
         .then(function(r) { return r.json(); })
         .then(function(res) {
