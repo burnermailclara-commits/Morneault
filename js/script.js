@@ -35,25 +35,31 @@
 
   /* ── 2. MENÚ MOBILE CUSTOM ── */
   function initMobileMenu() {
+    // Detectar si estamos en una subpágina (services/)
+    var isSubpage = window.location.pathname.indexOf('/services/') >= 0;
+    var b = isSubpage ? '../' : './';
+
     // Detectar logo automáticamente desde el nav de Framer
-    var logoSrc = 'images/8kxw08eemhstsyashbpyixrgdjg.png';
+    var logoSrc = b + 'images/8kxw08eemhstsyashbpyixrgdjg.png';
     var navLogo = document.querySelector('.framer-9Arn2 img');
     if (navLogo) logoSrc = navLogo.getAttribute('src').split('?')[0];
 
     // Inyectar HTML del menú
     var html = [
       '<div id="cmn">',
-      '  <a class="cmn-logo" href="./"><img src="' + logoSrc + '" alt="Morneault"></a>',
+      '  <a class="cmn-logo" href="' + b + '"><img src="' + logoSrc + '" alt="Morneault"></a>',
       '  <button id="cmn-btn" aria-label="Menu" aria-expanded="false">',
       '    <span></span><span></span><span></span>',
       '  </button>',
       '</div>',
       '<div id="cmn-overlay"></div>',
       '<div id="cmn-dropdown">',
-      '  <a href="./">Home</a>',
-      '  <a href="./about.html">À Propos</a>',
-      '  <a href="./services.html">Services</a>',
-      '  <a href="./contact.html" class="cmn-cta">Soumission Gratuite</a>',
+      '  <a href="' + b + '">Accueil</a>',
+      '  <a href="' + b + 'about.html">À Propos</a>',
+      '  <a href="' + b + 'services/limpieza-residencial.html">Éclat Résidentiel</a>',
+      '  <a href="' + b + 'services/areas-comunes.html">Entretien Commercial</a>',
+      '  <a href="' + b + 'services/limpieza-post-construccion.html">Post-Construction</a>',
+      '  <a href="' + b + 'contact.html" class="cmn-cta">Soumission Gratuite</a>',
       '</div>'
     ].join('');
 
