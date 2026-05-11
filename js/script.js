@@ -109,7 +109,7 @@
           Nom:      (form.querySelector('[name="Name"]') || {}).value || '',
           Email:    (form.querySelector('[name="Email"]') || {}).value || '',
           Telephone:(form.querySelector('[name="Phone"]') || {}).value || '',
-          Service:  (form.querySelector('[name="Service"]') || {}).value || ''
+          Service:  (function(){ var s = form.querySelector('[name="Service"]'); return s ? (s.value || (s.options[s.selectedIndex] ? s.options[s.selectedIndex].text : '')) : ''; })()
         };
 
         fetch('https://api.web3forms.com/submit', {
