@@ -18,7 +18,6 @@ html, body { margin: 0 !important; padding: 0 !important; background-color: #4fa
 [data-framer-appear-id],
 [data-framer-name] {
   opacity: 1 !important;
-  transform: none !important;
   visibility: visible !important;
 }
 .framer-9ho0yd, .framer-1v2h4yr, .framer-5q0u1z,
